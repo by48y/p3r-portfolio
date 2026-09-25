@@ -6,9 +6,9 @@ import Link from "next/link";
 import { ProfilePortrait } from "@/components/ProfilePortrait";
 
 const links = [
-  { label: "GitHub", href: "https://github.com/", detail: "CODE ARCHIVE ↗", icon: Code2 },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", detail: "SOCIAL LINK ↗", icon: BriefcaseBusiness },
-  { label: "Email", href: "mailto:hello@example.com", detail: "DIRECT CHANNEL ↗", icon: Mail },
+  { label: "GitHub", href: "https://github.com/by48y", detail: "CODE ARCHIVE ↗", icon: Code2 },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/aby-amanullah/", detail: "SOCIAL LINK ↗", icon: BriefcaseBusiness },
+  { label: "Email", href: "mailto:aby25ti@mahasiswa.pcr.ac.id", detail: "DIRECT CHANNEL ↗", icon: Mail },
 ];
 
 const affiliations = [
