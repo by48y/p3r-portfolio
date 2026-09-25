@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail } from "lucide-react";
 import Link from "next/link";
+import { ProfilePortrait } from "@/components/ProfilePortrait";
 
 const links = [
   { label: "GitHub", href: "https://github.com/", detail: "CODE ARCHIVE ↗", icon: Code2 },
@@ -30,14 +31,10 @@ export default function ContactPage() {
       </Link>
 
       <section className="sticky top-24 flex min-h-[55vh] items-center justify-center overflow-hidden bg-p3-dark lg:col-span-4 lg:min-h-[calc(100vh-12rem)]">
-          <div className="absolute h-[72vw] w-[72vw] max-w-[680px] rotate-[-12deg] skew-x-[-12deg] bg-p3-cyan opacity-90" />
-          <div className="relative mt-12 flex h-72 w-52 -skew-x-6 items-end justify-center border-2 border-p3-cyan bg-p3-blue/70 shadow-[0_0_60px_#00e5ff66]">
-            <div className="absolute -top-20 h-40 w-40 rounded-full bg-p3-dark" />
-            <div className="h-48 w-40 skew-x-6 rounded-t-[45%] bg-p3-dark" />
-            <span className="absolute bottom-5 skew-x-6 text-xs font-bold tracking-[0.2em] text-p3-cyan">
-              SUBJECT // 001
-            </span>
-          </div>
+        <div className="absolute h-[72vw] w-[72vw] max-w-[680px] rotate-[-12deg] skew-x-[-12deg] bg-p3-cyan opacity-90" />
+        <div className="relative w-full max-w-sm px-8">
+          <ProfilePortrait />
+        </div>
       </section>
 
         <motion.section

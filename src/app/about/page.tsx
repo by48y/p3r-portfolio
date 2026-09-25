@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ProfilePortrait } from "@/components/ProfilePortrait";
 
 const biography = [
   "Berawal dari jurusan Rekayasa Perangkat Lunak (RPL) di SMKN 2 Pekanbaru, ketertarikan saya pada dunia pemrograman dan desain mulai tumbuh. Hobi bermain game—terutama kekaguman saya pada estetika UI/UX seri Persona—menginspirasi saya untuk menggabungkan kode dan seni visual.",
@@ -27,16 +28,7 @@ export default function AboutPage() {
           Character Profile
         </h1>
         <div className="mt-16 grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
-          <div
-            aria-label="Portrait placeholder"
-            className="min-h-96 -skew-x-6 border-4 border-p3-cyan bg-slate-900/40 shadow-lg backdrop-blur-sm"
-          >
-            <div className="flex h-full min-h-96 items-end justify-center skew-x-6 p-8">
-              <span className="text-xs font-bold tracking-[0.2em] text-p3-cyan">
-                PORTRAIT // 001
-              </span>
-            </div>
-          </div>
+          <ProfilePortrait />
           <motion.div
             className="space-y-6 border-l-4 border-p3-cyan bg-slate-900/40 p-6 text-slate-100 shadow-lg backdrop-blur-md md:p-10"
             initial="hidden"
