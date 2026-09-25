@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   title: "Aby Amanullah | Portfolio",
   description:
     "Interactive web portfolio inspired by Persona 3 Reload UI, featuring my work in Data Science, Logic Systems, and Server Architecture",
+  themeColor: "#003EDA",
   openGraph: {
     title: "Aby Amanullah | Portfolio",
     description:
       "Interactive web portfolio inspired by Persona 3 Reload UI, featuring my work in Data Science, Logic Systems, and Server Architecture",
     type: "website",
-    themeColor: "#003EDA",
   },
 };
 
