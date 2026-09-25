@@ -6,6 +6,7 @@ import { P3Menu } from "@/components/P3Menu";
 
 const tags = [
   "PROGRAMMER",
+  "DATA ANALYST",
   "DESIGNER",
   "PHOTOGRAPHER",
 ];
@@ -60,29 +61,16 @@ export default function Home() {
             ))}
           </motion.div>
           <motion.div
-            className="mt-10 space-y-5 border-l-8 border-p3-blue bg-white/75 p-6 text-base leading-relaxed text-slate-700 shadow-lg backdrop-blur-sm md:p-8"
+            className="mt-10 border-l-4 border-p3-cyan bg-slate-900/40 p-6 text-base leading-relaxed text-slate-100 shadow-lg backdrop-blur-md md:p-8"
             variants={{
               hidden: { opacity: 0, x: -32 },
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <p>
-              Berawal dari jurusan Rekayasa Perangkat Lunak (RPL) di SMKN 2
-              Pekanbaru, ketertarikan saya pada dunia pemrograman dan desain
-              mulai tumbuh. Hobi bermain game—terutama kekaguman saya pada
-              estetika UI/UX seri Persona—menginspirasi saya untuk
-              menggabungkan kode dan seni visual. Bagi saya, merancang dan
-              membangun website bukan sekadar tugas, melainkan sebuah taman
-              bermain yang menyenangkan.
-            </p>
-            <p>
-              Saat ini, saya melanjutkan studi di Politeknik Caltex Riau (PCR).
-              Perjalanan ini membawa saya mengeksplorasi kembali fundamental
-              pemrograman melalui Python, C++, dan Java, hingga mendalami
-              modern web frameworks. Lebih dari sekadar baris kode, saya juga
-              bergerak di ranah kreatif; mulai dari mendesain UI website, logo,
-              poster, hingga meracik visual editing yang interaktif.
-            </p>
+            Menggabungkan ketajaman logika pemrograman dengan estetika desain
+            visual. Saya merancang ekosistem digital interaktif dan menganalisis
+            data untuk menghadirkan solusi yang fungsional sekaligus memanjakan
+            mata. Welcome to my digital workspace.
           </motion.div>
           <motion.div
             className="mt-8"
@@ -92,7 +80,7 @@ export default function Home() {
             }}
           >
             <Link
-              className="inline-block -skew-x-6 bg-p3-blue px-8 py-4 font-black italic tracking-[0.12em] text-white shadow-lg transition-colors hover:bg-p3-cyan hover:text-p3-dark"
+              className="inline-block -skew-x-6 border-2 border-p3-cyan bg-p3-blue px-8 py-4 font-black italic tracking-[0.12em] text-white shadow-lg transition-colors hover:bg-p3-cyan hover:text-p3-dark"
               href="/portfolio"
             >
               <span className="inline-block skew-x-6">VIEW PORTFOLIO</span>
