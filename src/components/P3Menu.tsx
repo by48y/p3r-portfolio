@@ -20,15 +20,17 @@ export function P3Menu() {
     <>
       <nav aria-label="Main navigation" className="p3-menu">
       <span className="p3-menu__label">MENU // 01</span>
-      <div className="flex flex-wrap justify-end gap-2">
-        {items.map((item) => {
+      <div className="flex flex-col items-start gap-2">
+        {items.map((item, index) => {
           const isActive = active === item.label;
 
           return (
             <motion.button
-              className={`group relative block -skew-x-12 overflow-hidden clip-slant bg-p3-dark px-8 py-4 text-2xl font-bold text-white transition-colors hover:bg-p3-blue hover:text-p3-cyan hover:text-glow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
-                isActive ? "bg-p3-blue text-p3-cyan text-glow" : ""
+              animate={{ opacity: 1, x: 0 }}
+              className={`group relative block -skew-x-12 overflow-hidden clip-slant bg-p3-dark/70 px-8 py-4 text-2xl font-bold text-white transition-colors hover:bg-p3-cyan hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
+                isActive ? "bg-p3-cyan text-black" : ""
               }`}
+              initial={{ opacity: 0, x: -48 }}
               key={item.label}
               onClick={() => {
                 if (transitioning) return;
@@ -44,9 +46,14 @@ export function P3Menu() {
                 playHover();
               }}
               onFocus={() => setActive(item.label)}
-              whileHover={{ backgroundColor: "#003EDA", color: "#00E5FF", x: 10 }}
+              whileHover={{ x: 10 }}
               whileTap={{ scale: 0.96 }}
-              transition={{ type: "spring", stiffness: 400, damping: 24 }}
+              transition={{
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 400,
+                damping: 24,
+              }}
             >
               <span className="inline-block skew-x-[12deg]">{item.label}</span>
               {isActive && (

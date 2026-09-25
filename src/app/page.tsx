@@ -3,25 +3,21 @@
 import { DynamicCursor } from "@/components/DynamicCursor";
 import { P3Menu } from "@/components/P3Menu";
 import { PortfolioCard } from "@/components/PortfolioCard";
-import { portfolioData } from "@/data/portfolio";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-p3-dark">
+    <div className="grid h-screen grid-cols-[clamp(220px,25vw,320px)_minmax(0,1fr)] overflow-hidden bg-p3-dark">
       <DynamicCursor />
-      <aside className="flex w-1/3 min-w-0 items-center bg-p3-dark px-8 lg:px-16">
+      <aside className="flex min-h-0 items-center bg-p3-dark px-6 py-8 lg:px-10">
         <P3Menu />
       </aside>
-      <main className="grid flex-1 grid-cols-1 gap-6 bg-p3-dark p-6 md:grid-cols-2 xl:grid-cols-3">
-        {portfolioData.map((project) => (
-          <PortfolioCard
-            description={project.description}
-            id={project.id}
-            key={project.id}
-            techStack={project.techStack}
-            title={project.title}
-          />
-        ))}
+      <main className="min-w-0 overflow-y-auto bg-p3-dark p-6 lg:p-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <PortfolioCard />
+          <PortfolioCard />
+          <PortfolioCard />
+          <PortfolioCard />
+        </div>
       </main>
     </div>
   );

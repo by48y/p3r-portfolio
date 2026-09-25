@@ -10,7 +10,8 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: var(--paper); color: var(--ink); cursor: none; margin: 0; }
+html, body { background: #0A0A0A; color: white; }
+body { cursor: none; margin: 0; }
 @media (pointer: fine) { body { cursor: none; } }
 .p3-cursor { background: var(--red); border: 2px solid var(--paper); border-radius: 50%; pointer-events: none; position: fixed; transform: translate(-50%, -50%); z-index: 50; }
 .p3-background { animation: p3-background-pan 32s linear infinite; background-image: repeating-linear-gradient(135deg, transparent 0, transparent 18px, rgba(36, 57, 198, .1) 18px, rgba(36, 57, 198, .1) 20px); background-size: 160px 160px; inset: 0; pointer-events: none; position: fixed; z-index: 0; }
@@ -22,7 +23,7 @@ button { background: none; border: 0; color: inherit; cursor: pointer; font: inh
 .nav { align-items: center; display: flex; justify-content: space-between; padding: 28px 5vw; }
 .brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -.08em; }
 .brand span, .eyebrow { color: var(--red); }
-.p3-menu { align-items: center; display: flex; gap: 16px; }
+.p3-menu { align-items: flex-start; display: flex; flex-direction: column; gap: 16px; }
 .p3-menu__label { color: var(--blue); font-size: .6rem; font-weight: 800; letter-spacing: .12em; }
 .p3-transition { background: var(--blue); inset: 0; pointer-events: none; position: fixed; transform-origin: right center; z-index: 20; }
 .p3-transition__slash { background: #50e8e1; clip-path: polygon(44% 0, 100% 0, 56% 100%, 0 100%); height: 100%; position: absolute; width: 100%; }
