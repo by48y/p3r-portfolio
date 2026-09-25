@@ -2,10 +2,19 @@
 
 import { motion } from "framer-motion";
 
-export function PortfolioCard() {
+type PortfolioCardProps = {
+  title: string;
+  description: string;
+  techStack: string[];
+};
+
+export function PortfolioCard({
+  title,
+  description,
+  techStack,
+}: PortfolioCardProps) {
   return (
     <motion.article
-      aria-hidden="true"
       className="min-h-64 w-full border border-white/50 bg-white/75 p-px text-slate-900 shadow-lg backdrop-blur-sm transition-shadow"
       initial={{ scale: 1, boxShadow: "0 0 0 rgba(0, 229, 255, 0)" }}
       style={{
@@ -29,12 +38,10 @@ export function PortfolioCard() {
           +
         </div>
         <div className="flex min-h-40 flex-1 flex-col p-6">
-          <h2 className="text-2xl font-bold uppercase italic">Project title</h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-600">
-            A short project description placeholder.
-          </p>
+          <h2 className="text-2xl font-bold uppercase italic">{title}</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">{description}</p>
           <div className="mt-auto flex flex-wrap gap-2 pt-6">
-            {["Tech one", "Tech two", "Tech three"].map((technology) => (
+            {techStack.map((technology) => (
               <span
                 className="-skew-x-6 bg-sky-100 px-3 py-1 text-xs font-bold text-slate-800"
                 key={technology}

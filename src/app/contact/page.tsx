@@ -1,18 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BriefcaseBusiness, Code2, Mail } from "lucide-react";
 import Link from "next/link";
 
 const links = [
-  { label: "GitHub", href: "https://github.com/", detail: "CODE ARCHIVE ↗" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", detail: "SOCIAL LINK ↗" },
-  { label: "Email", href: "mailto:hello@example.com", detail: "DIRECT CHANNEL ↗" },
+  { label: "GitHub", href: "https://github.com/", detail: "CODE ARCHIVE ↗", icon: Code2 },
+  { label: "LinkedIn", href: "https://www.linkedin.com/", detail: "SOCIAL LINK ↗", icon: BriefcaseBusiness },
+  { label: "Email", href: "mailto:hello@example.com", detail: "DIRECT CHANNEL ↗", icon: Mail },
 ];
 
 const affiliations = [
+  "Politeknik Caltex Riau",
   "PT Perkebunan Nusantara IV Regional 3",
   "Samsung Innovation Campus Batch 8 (Team SLEKERS)",
   "UKM CTS",
+  "UKM CSIRT",
+  "SMKN 2 Pekanbaru",
 ];
 
 export default function ContactPage() {
@@ -43,7 +47,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="w-full max-w-xl">
+          <div className="flex w-full max-w-xl flex-col">
             <p className="mb-8 text-xs font-bold italic tracking-[0.25em] text-p3-cyan">
               SOCIAL LINK // CHARACTER STATUS
             </p>
@@ -70,20 +74,26 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="grid gap-3">
+            <div className="mt-auto flex flex-row gap-8 pt-8">
               {links.map((link) => (
-                <a
-                  className="group flex items-center justify-between border-b border-white/30 py-4 text-xl font-bold italic transition-colors hover:border-p3-cyan hover:text-p3-cyan"
+                <motion.a
+                  className="group flex flex-col items-center gap-2 text-white transition-colors hover:text-p3-cyan"
                   href={link.href}
                   key={link.label}
                   rel="noreferrer"
                   target={link.href.startsWith("http") ? "_blank" : undefined}
+                  whileHover={{ color: "#00e5ff" }}
                 >
-                  <span>{link.label}</span>
-                  <span className="text-xs tracking-[0.15em] text-white/60 group-hover:text-p3-cyan">
+                  <motion.span
+                    className="block"
+                    whileHover={{ scale: 1.1, skewX: -12 }}
+                  >
+                    <link.icon size={40} />
+                  </motion.span>
+                  <span className="text-[10px] tracking-widest text-white/60 group-hover:text-p3-cyan">
                     {link.detail}
                   </span>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
