@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${teko.variable} ${teko.className} bg-p3-dark text-white`}>
+      <body className={`${teko.variable} ${teko.className} bg-slate-100 text-slate-900`}>
         <P3Background />
         <Scanlines />
         <P3Cursor />

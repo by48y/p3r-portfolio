@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 import { useP3RSounds } from "@/hooks/useP3RSounds";
 
 const items = [
-  { label: "Home", href: "top" },
-  { label: "About", href: "about" },
-  { label: "Portfolio", href: "work" },
-  { label: "Contact", href: "contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function P3Menu() {
@@ -25,10 +26,10 @@ export function P3Menu() {
           const isActive = active === item.label;
 
           return (
-            <motion.button
+            <motion.div
               animate={{ opacity: 1, x: 0 }}
-              className={`group relative block -skew-x-12 overflow-hidden clip-slant bg-p3-dark/70 px-8 py-4 text-2xl font-bold text-white transition-colors hover:bg-p3-cyan hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
-                isActive ? "bg-p3-cyan text-black" : ""
+              className={`group relative block -skew-x-12 overflow-hidden clip-slant bg-white/80 px-8 py-4 text-2xl font-bold text-slate-800 transition-colors hover:bg-sky-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
+                isActive ? "bg-sky-100 text-slate-900" : ""
               }`}
               initial={{ opacity: 0, x: -48 }}
               key={item.label}
@@ -37,10 +38,7 @@ export function P3Menu() {
                 setActive(item.label);
                 setTransitioning(true);
                 playClick();
-                window.setTimeout(() => {
-                  window.location.hash = item.href;
-                  setTransitioning(false);
-                }, 360);
+                window.setTimeout(() => setTransitioning(false), 360);
               }}
               onMouseEnter={() => {
                 playHover();
@@ -55,7 +53,9 @@ export function P3Menu() {
                 damping: 24,
               }}
             >
-              <span className="inline-block skew-x-[12deg]">{item.label}</span>
+              <Link className="block" href={item.href}>
+                <span className="inline-block skew-x-[12deg]">{item.label}</span>
+              </Link>
               {isActive && (
                 <motion.span
                   className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-p3-cyan"
@@ -63,7 +63,7 @@ export function P3Menu() {
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               )}
-            </motion.button>
+            </motion.div>
           );
         })}
       </div>
