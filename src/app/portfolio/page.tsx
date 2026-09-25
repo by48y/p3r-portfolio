@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PortfolioCard } from "@/components/PortfolioCard";
 
 export default function PortfolioPage() {
   return (
@@ -17,7 +18,12 @@ export default function PortfolioPage() {
         <h1 className="mt-4 -skew-x-6 text-6xl font-bold italic uppercase leading-none text-p3-blue text-glow md:text-8xl">
           Portfolio
         </h1>
-        <div className="mt-16 grid min-h-96 gap-8 md:grid-cols-2" />
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          <PortfolioCard />
+          <PortfolioCard />
+          <PortfolioCard />
+          <PortfolioCard />
+        </div>
       </div>
     </main>
   );

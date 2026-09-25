@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Teko } from "next/font/google";
 import { CustomCursor } from "@/components/CustomCursor";
-import { P3Background } from "@/components/P3Background";
 import { PageTransition } from "@/components/PageTransition";
 import { Scanlines } from "@/components/Scanlines";
 import "./globals.css";
@@ -32,8 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${teko.variable} ${teko.className} bg-slate-100 text-slate-900`}>
-        <P3Background />
+      <body className={`${teko.variable} ${teko.className} bg-animated-lines cursor-none text-slate-900`}>
         <Scanlines />
         <CustomCursor />
         <PageTransition>{children}</PageTransition>

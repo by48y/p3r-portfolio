@@ -17,7 +17,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
   if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-slate-100 text-slate-900">
+    <main className="min-h-screen w-full bg-transparent text-slate-900">
       <section className="relative flex h-[30vh] min-h-64 items-end overflow-hidden bg-p3-blue px-6 pb-8 pt-16 md:px-14">
         <Link
           className="clip-slant absolute left-6 top-6 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors hover:bg-p3-cyan hover:text-p3-dark md:left-14"

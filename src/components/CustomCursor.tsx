@@ -1,38 +1,35 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function CustomCursor() {
-  const [mounted, setMounted] = useState(false);
-  const [interactive, setInteractive] = useState(false);
-  const x = useSpring(useMotionValue(-100), { stiffness: 500, damping: 35 });
-  const y = useSpring(useMotionValue(-100), { stiffness: 500, damping: 35 });
+  const [isMounted, setIsMounted] = useState(false);
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
 
   useEffect(() => {
-    setMounted(true);
-    const move = (event: MouseEvent) => {
+    setIsMounted(true);
+    const handleMouseMove = (event: MouseEvent) => {
       x.set(event.clientX);
       y.set(event.clientY);
-      setInteractive(
-        event.target instanceof Element &&
-          Boolean(event.target.closest("a, button")),
-      );
     };
 
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [x, y]);
 
-  if (typeof window === "undefined" || !mounted) return null;
+  if (!isMounted) return null;
 
   return (
-    <motion.span
+    <motion.div
       aria-hidden="true"
-      className="p3-cursor fixed left-0 top-0 z-[9999] pointer-events-none"
-      animate={{ height: interactive ? 42 : 12, width: interactive ? 42 : 12 }}
-      style={{ left: x, top: y }}
-      transition={{ type: "spring", stiffness: 500, damping: 28 }}
+      className="pointer-events-none fixed left-0 top-0 z-[9999] h-7 w-7 bg-[#00e5ff]"
+      style={{
+        left: x,
+        top: y,
+        clipPath: "polygon(0 0, 100% 52%, 48% 62%, 28% 100%)",
+      }}
     />
   );
 }
