@@ -6,7 +6,7 @@ export function PortfolioCard() {
   return (
     <motion.article
       aria-hidden="true"
-      className="min-h-64 w-full bg-white p-px text-slate-900 shadow-md transition-shadow"
+      className="min-h-64 w-full border border-white/50 bg-white/75 p-px text-slate-900 shadow-lg backdrop-blur-sm transition-shadow"
       initial={{ scale: 1, boxShadow: "0 0 0 rgba(0, 229, 255, 0)" }}
       style={{
         clipPath:
@@ -19,12 +19,32 @@ export function PortfolioCard() {
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
     >
       <div
-        className="h-full min-h-64 border border-slate-200 bg-white"
+        className="flex min-h-64 flex-col border border-white/50 bg-white/75 backdrop-blur-sm"
         style={{
           clipPath:
             "polygon(0 0, calc(100% - 1.5rem) 0, 100% 1.5rem, 100% 100%, 0 100%)",
         }}
-      />
+      >
+        <div className="flex h-1/2 min-h-40 items-center justify-center bg-slate-200 text-4xl text-slate-400">
+          +
+        </div>
+        <div className="flex min-h-40 flex-1 flex-col p-6">
+          <h2 className="text-2xl font-bold uppercase italic">Project title</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            A short project description placeholder.
+          </p>
+          <div className="mt-auto flex flex-wrap gap-2 pt-6">
+            {["Tech one", "Tech two", "Tech three"].map((technology) => (
+              <span
+                className="-skew-x-6 bg-sky-100 px-3 py-1 text-xs font-bold text-slate-800"
+                key={technology}
+              >
+                <span className="inline-block skew-x-6">{technology}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </motion.article>
   );
 }

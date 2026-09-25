@@ -17,7 +17,7 @@ const affiliations = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-100 text-slate-900">
+    <main className="min-h-screen w-full overflow-hidden bg-transparent text-slate-900">
       <Link
         className="clip-slant absolute left-6 top-6 z-10 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors hover:bg-p3-cyan hover:text-p3-dark"
         href="/"

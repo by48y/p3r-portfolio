@@ -25,17 +25,26 @@ export function AboutSection() {
         }}
       />
 
-      <div className="space-y-8 md:pt-8">
-        <motion.div variants={contentVariants}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-p3-blue">
-            About // 01
-          </p>
-          <h2 className="mt-3 text-4xl font-bold">Biography placeholder</h2>
-          <p className="mt-4 max-w-xl leading-relaxed text-slate-600">
-            A short biography placeholder for introducing the person behind
-            the portfolio.
-          </p>
-        </motion.div>
+      <div       className="space-y-8 border-l-8 border-p3-blue bg-white/75 p-6 shadow-lg backdrop-blur-sm md:p-8">
+        <motion.p
+          className="text-xs font-bold uppercase tracking-[0.2em] text-p3-blue"
+          variants={contentVariants}
+        >
+          About // 01
+        </motion.p>
+        <motion.h3
+          className="text-4xl font-bold italic"
+          variants={contentVariants}
+        >
+          Biography
+        </motion.h3>
+        <motion.p
+          className="max-w-xl leading-relaxed text-slate-600"
+          variants={contentVariants}
+        >
+          A short biography placeholder for introducing the person behind the
+          portfolio.
+        </motion.p>
 
         <motion.div variants={contentVariants}>
           <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-slate-500">

@@ -7,7 +7,7 @@ import { PortfolioCard } from "@/components/PortfolioCard";
 
 export default function Home() {
   return (
-    <div className="grid h-screen grid-cols-[clamp(220px,25vw,320px)_minmax(0,1fr)] overflow-hidden bg-slate-100 text-slate-900">
+    <div className="grid h-screen min-h-screen w-full grid-cols-[clamp(220px,25vw,320px)_minmax(0,1fr)] overflow-hidden bg-transparent text-slate-900">
       <aside className="flex min-h-0 items-center bg-slate-100 px-6 py-8 lg:px-10">
         <P3Menu />
       </aside>
