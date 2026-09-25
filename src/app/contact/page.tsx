@@ -9,6 +9,12 @@ const links = [
   { label: "Email", href: "mailto:hello@example.com", detail: "DIRECT CHANNEL ↗" },
 ];
 
+const affiliations = [
+  "PT Perkebunan Nusantara IV Regional 3",
+  "Samsung Innovation Campus Batch 8 (Team SLEKERS)",
+  "UKM CTS",
+];
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-slate-100 text-slate-900">
@@ -49,7 +55,19 @@ export default function ContactPage() {
 
             <div className="my-12 border-y border-p3-cyan/40 py-6">
               <p className="text-xs font-bold tracking-[0.2em] text-p3-cyan">CURRENT AFFILIATIONS</p>
-              <p className="mt-3 text-2xl font-bold italic">None</p>
+              <div className="mt-4 grid gap-3">
+                {affiliations.map((affiliation, index) => (
+                  <motion.p
+                    animate={{ opacity: 1, x: 0 }}
+                    className="-skew-x-6 bg-p3-dark/20 px-4 py-2 text-xl font-black italic"
+                    initial={{ opacity: 0, x: 80 }}
+                    key={affiliation}
+                    transition={{ delay: index * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <span className="inline-block skew-x-6">{affiliation}</span>
+                  </motion.p>
+                ))}
+              </div>
             </div>
 
             <div className="grid gap-3">

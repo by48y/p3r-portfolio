@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export function DynamicCursor() {
+export function CustomCursor() {
   const [interactive, setInteractive] = useState(false);
   const x = useSpring(useMotionValue(-100), { stiffness: 500, damping: 35 });
   const y = useSpring(useMotionValue(-100), { stiffness: 500, damping: 35 });
@@ -12,8 +12,12 @@ export function DynamicCursor() {
     const move = (event: MouseEvent) => {
       x.set(event.clientX);
       y.set(event.clientY);
-      setInteractive(Boolean((event.target as HTMLElement).closest("a, button")));
+      setInteractive(
+        event.target instanceof Element &&
+          Boolean(event.target.closest("a, button")),
+      );
     };
+
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, [x, y]);
