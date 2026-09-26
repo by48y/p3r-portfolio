@@ -24,7 +24,7 @@ export default function ContactPage() {
   return (
     <main className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 gap-12 overflow-hidden bg-transparent px-6 py-24 text-slate-900 lg:grid-cols-12 md:px-14">
       <Link
-        className="clip-slant absolute left-6 top-6 z-10 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors hover:bg-p3-cyan hover:text-p3-dark"
+        className="group relative z-[9999] block cursor-pointer pointer-events-auto clip-slant absolute left-6 top-6 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors group-hover:text-p3-cyan hover:bg-p3-cyan hover:text-p3-dark"
         href="/"
       >
         RETURN

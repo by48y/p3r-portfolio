@@ -93,7 +93,7 @@ export default function Home() {
             }}
           >
             <Link
-              className="group relative inline-block skew-x-[-12deg] overflow-hidden border-2 border-slate-800 bg-transparent px-8 py-4 font-black italic uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-p3-cyan"
+              className="group relative z-[9999] inline-block cursor-pointer pointer-events-auto skew-x-[-12deg] overflow-hidden border-2 border-slate-800 bg-transparent px-8 py-4 font-black italic uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-p3-cyan group-hover:text-p3-cyan"
               href="/portfolio"
             >
               <div className="absolute inset-0 z-0 translate-x-[-100%] bg-p3-cyan transition-transform duration-300 ease-out group-hover:translate-x-0" />

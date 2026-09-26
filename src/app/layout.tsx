@@ -43,7 +43,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${teko.variable} ${teko.className} bg-animated-lines cursor-none text-slate-900`}>
+      <body className={`${teko.variable} ${teko.className} cursor-none text-slate-900`}>
+        <div aria-hidden="true" className="bg-animated-lines pointer-events-none fixed inset-0 -z-50" />
         <SystemBoot />
         <Scanlines />
         <CustomCursor />
