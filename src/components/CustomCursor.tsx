@@ -18,7 +18,9 @@ export function CustomCursor() {
   });
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     setIsMounted(true);
+
     const isClickable = (target: EventTarget | null) =>
       target instanceof Element && Boolean(target.closest("a, button, .clickable"));
     const handleMouseMove = (event: MouseEvent) => {

@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 import { P3Menu } from "@/components/P3Menu";
+import { MagneticButton } from "@/components/MagneticButton";
 import { TypewriterText } from "@/components/TypewriterText";
 
 const tags = [
@@ -13,6 +15,19 @@ const tags = [
 ];
 
 export default function Home() {
+  const [clickCount, setClickCount] = useState(0);
+
+  const handleHeaderClick = () => {
+    setClickCount((count) => {
+      const nextCount = count + 1;
+      if (nextCount === 3) {
+        document.body.classList.toggle("dark-hour");
+        return 0;
+      }
+      return nextCount;
+    });
+  };
+
   return (
     <div className="grid min-h-screen w-full grid-cols-[clamp(220px,25vw,320px)_minmax(0,1fr)] bg-transparent text-slate-900">
       <aside className="flex min-h-0 items-center bg-transparent px-6 py-8 lg:px-10">
@@ -34,6 +49,7 @@ export default function Home() {
         >
           <motion.h1
             className="p3-glitch -skew-x-6 text-6xl font-black italic uppercase leading-[0.8] tracking-[-0.06em] text-p3-blue text-glow md:text-8xl"
+            onClick={handleHeaderClick}
             variants={{
               hidden: { opacity: 0, x: -80, skewX: "-12deg" },
               visible: { opacity: 1, x: 0, skewX: "-6deg" },
@@ -77,12 +93,14 @@ export default function Home() {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <Link
-              className="inline-block -skew-x-6 border-2 border-p3-cyan bg-p3-blue px-8 py-4 font-black italic tracking-[0.12em] text-white shadow-lg transition-colors hover:bg-p3-cyan hover:text-p3-dark"
-              href="/portfolio"
-            >
-              <span className="inline-block skew-x-6">VIEW PORTFOLIO</span>
-            </Link>
+            <MagneticButton>
+              <Link
+                className="inline-block -skew-x-6 border-2 border-p3-cyan bg-p3-blue px-8 py-4 font-black italic tracking-[0.12em] text-white shadow-lg transition-colors hover:bg-p3-cyan hover:text-p3-dark"
+                href="/portfolio"
+              >
+                <span className="inline-block skew-x-6">VIEW PORTFOLIO</span>
+              </Link>
+            </MagneticButton>
           </motion.div>
         </motion.section>
       </main>

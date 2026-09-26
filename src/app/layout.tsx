@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Teko } from "next/font/google";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PageTransition } from "@/components/PageTransition";
@@ -13,16 +13,27 @@ const teko = Teko({
 });
 
 export const metadata: Metadata = {
-  title: "Aby Amanullah | Portfolio",
+  title: "Aby Amanullah // Digital Portfolio",
   description:
-    "Interactive web portfolio inspired by Persona 3 Reload UI, featuring my work in Data Science, Logic Systems, and Server Architecture",
-  themeColor: "#003EDA",
+    "Programmer, Data Analyst & Designer bridging the gap between logic and visual aesthetics.",
   openGraph: {
-    title: "Aby Amanullah | Portfolio",
+    title: "Aby Amanullah // Digital Portfolio",
     description:
-      "Interactive web portfolio inspired by Persona 3 Reload UI, featuring my work in Data Science, Logic Systems, and Server Architecture",
+      "Programmer, Data Analyst & Designer bridging the gap between logic and visual aesthetics.",
     type: "website",
+    images: ["/og-image.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aby Amanullah // Digital Portfolio",
+    description:
+      "Programmer, Data Analyst & Designer bridging the gap between logic and visual aesthetics.",
+    images: ["/og-image.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#00E5FF",
 };
 
 export default function RootLayout({

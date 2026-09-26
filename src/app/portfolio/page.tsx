@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { MagneticButton } from "@/components/MagneticButton";
 import { PortfolioCard } from "@/components/PortfolioCard";
 import { playUISound } from "@/utils/sound";
 
@@ -69,6 +70,24 @@ const workExperiences = [
     period: "2026",
     description:
       "Berkolaborasi lintas institusi dalam eksekusi acara keamanan siber, mengelola alur komunikasi, dan memastikan kelancaran teknis operasional.",
+    link: "#",
+  },
+  {
+    id: 8,
+    role: "Scholarship Recipient",
+    entity: "Beasiswa Data Science IDCamp 2024",
+    period: "2024",
+    description:
+      "Mengikuti program beasiswa data science yang memvalidasi kemampuan analitik data secara akademis dan profesional.",
+    link: "#",
+  },
+  {
+    id: 9,
+    role: "Participant",
+    entity: "Samsung Innovation Campus & Tim SLEKERS",
+    period: "2024",
+    description:
+      "Mengikuti kompetisi dan program intensif yang mengasah kolaborasi tim, penyelesaian masalah terstruktur, serta daya saing di tingkat nasional.",
     link: "#",
   },
 ];
@@ -137,7 +156,7 @@ function GalleryImage({
       className={`relative overflow-hidden rounded-lg border border-slate-700/50 shadow-md ${
         banner
           ? "group w-full mt-8"
-          : "break-inside-avoid inline-block w-full mb-4 group"
+          : "break-inside-avoid inline-block w-full mb-4 group transform-gpu"
       }`}
       initial={{ opacity: 0.7 }}
       animate={{ opacity: loaded ? 1 : 0.7 }}
@@ -145,7 +164,7 @@ function GalleryImage({
       {!loaded && <div className="absolute inset-0 animate-pulse bg-slate-950" />}
       <Image
         alt={image.alt}
-        className={`relative h-auto w-full transition-opacity duration-300 ${
+        className={`relative block h-auto w-full object-contain transition-opacity duration-300 ${
           loaded ? "opacity-100" : "opacity-0"
         } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
         height={image.height}
@@ -192,35 +211,37 @@ export default function PortfolioPage() {
             { id: "projects", label: "PROJECTS" },
             { id: "gallery", label: "DESIGN GALLERY" },
           ].map((tab) => (
-            <button
-              className={`relative -skew-x-12 px-6 py-3 text-sm font-black italic tracking-wider ${
-                activeTab === tab.id
-                  ? "text-p3-dark"
-                  : "bg-transparent text-slate-700"
-              }`}
-              key={tab.id}
-              onClick={() => {
-                setActiveTab(tab.id);
-                playUISound("click");
-              }}
-              onMouseEnter={() => playUISound("hover")}
-              type="button"
-            >
-              {activeTab === tab.id && (
-                <motion.span
-                  className="absolute inset-0 z-0 bg-p3-cyan"
-                  layoutId="activeTabIndicator"
-                  transition={{ type: "spring", stiffness: 500, damping: 35 }}
-                />
-              )}
-              <span className="relative z-10 inline-block skew-x-12">{tab.label}</span>
-            </button>
+            <MagneticButton key={tab.id}>
+              <motion.button
+                className={`relative -skew-x-12 px-6 py-3 text-sm font-black italic tracking-wider ${
+                  activeTab === tab.id
+                    ? "text-p3-dark"
+                    : "bg-transparent text-slate-700"
+                }`}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  playUISound("click");
+                }}
+                onMouseEnter={() => playUISound("hover")}
+                type="button"
+              >
+                {activeTab === tab.id && (
+                  <motion.span
+                    className="absolute inset-0 z-0 bg-p3-cyan"
+                    layoutId="activeTabIndicator"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
+                <span className="relative z-10 inline-block skew-x-12">{tab.label}</span>
+              </motion.button>
+            </MagneticButton>
           ))}
         </div>
 
         {activeTab === "experience" ? (
           <motion.div
             className="mt-10 grid gap-4"
+            layout
             initial="hidden"
             animate="visible"
             variants={{
@@ -232,34 +253,39 @@ export default function PortfolioPage() {
               <motion.div
                 className="skew-x-[-4deg] border-l-4 border-p3-cyan bg-slate-900/80 text-white shadow-lg backdrop-blur-sm"
                 key={`${experience.role}-${experience.entity}`}
+                layout
                 variants={{
                   hidden: { opacity: 0, x: -32 },
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <button
+                <motion.button
                   className="w-full p-5 text-left"
+                  layout="position"
                   onClick={() =>
                     setExpandedExp(expandedExp === experience.id ? null : experience.id)
                   }
                   type="button"
                 >
-                  <div className="flex flex-wrap items-baseline justify-between gap-3 skew-x-[4deg]">
-                    <div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-3 skew-x-[4deg]" >
+                    <motion.div layout="position">
                       <h2 className="text-xl font-black italic text-p3-cyan">
                         {experience.role}
                       </h2>
                       <p className="mt-2 text-sm text-slate-300">
                         {experience.entity}
                       </p>
-                    </div>
+                    </motion.div>
                     {experience.period && (
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/70">
+                      <motion.span
+                        className="text-[10px] font-bold uppercase tracking-widest text-white/70"
+                        layout="position"
+                      >
                         {experience.period}
-                      </span>
+                      </motion.span>
                     )}
                   </div>
-                </button>
+                </motion.button>
                 <AnimatePresence initial={false}>
                   {expandedExp === experience.id && (
                     <motion.div
@@ -268,19 +294,25 @@ export default function PortfolioPage() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                     >
-                      <div className="mt-1 border-l-2 border-p3-cyan bg-slate-900/40 p-4 text-sm text-slate-300">
-                        <p className="skew-x-[4deg]">{experience.description}</p>
+                      <motion.div
+                        className="mt-1 border-l-2 border-p3-cyan bg-slate-900/40 p-4 text-sm text-slate-300"
+                        layout="position"
+                      >
+                        <motion.p className="skew-x-[4deg]" layout="position">
+                          {experience.description}
+                        </motion.p>
                         {experience.link !== "#" && (
-                          <a
+                          <motion.a
                             className="mt-4 inline-block -skew-x-6 bg-p3-cyan px-4 py-2 text-xs font-black tracking-wider text-p3-dark transition-colors hover:bg-white"
                             href={experience.link}
+                            layout="position"
                             rel="noreferrer"
                             target="_blank"
                           >
                             <span className="inline-block skew-x-6">ACCESS ARCHIVE ↗</span>
-                          </a>
+                          </motion.a>
                         )}
-                      </div>
+                      </motion.div>
                     </motion.div>
                   )}
                 </AnimatePresence>
