@@ -26,6 +26,7 @@ export function MagneticButton({ children }: { children: ReactNode }) {
   return (
     <motion.div
       ref={ref}
+      className="relative"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         x.set(0);

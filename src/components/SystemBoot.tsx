@@ -44,7 +44,9 @@ export function SystemBoot() {
     <motion.div
       aria-label="System boot sequence"
       aria-live="polite"
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black px-8 font-mono text-sm text-white"
+      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-black px-8 font-mono text-sm text-white ${
+        exiting ? "pointer-events-none" : ""
+      }`}
       initial={{ y: 0 }}
       animate={{ y: exiting ? "-100%" : 0 }}
       transition={{ duration: exiting ? 0.6 : 0, ease: [0.76, 0, 0.24, 1] }}
