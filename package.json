@@ -1,6 +1,6 @@
 {
   "name": "persona-portfolio",
-  "version": "2.8.5",
+  "version": "3.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

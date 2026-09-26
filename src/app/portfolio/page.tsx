@@ -52,7 +52,7 @@ const workExperiences = [
     period: "2026",
     description:
       "Bertanggung jawab penuh atas pengabadian aset visual, pengeditan media, dan manajemen arsip digital (Google Drive) untuk dokumentasi resmi acara.",
-    link: "https://drive.google.com/drive/folders/placeholder",
+    link: "https://drive.google.com/drive/folders/1Zmm8MMr9PLgScg2U57c15khWJmDvwigN",
   },
   {
     id: 6,
@@ -61,7 +61,7 @@ const workExperiences = [
     period: "2026",
     description:
       "Melakukan coverage visual secara real-time, memastikan kualitas estetika foto/video, dan mengelola distribusi media pasca-acara.",
-    link: "https://drive.google.com/drive/folders/placeholder",
+    link: "https://drive.google.com/drive/folders/1Jv1tjotZPXQs2v4lkvLLgCEunofs3Sxy?usp=sharing",
   },
   {
     id: 7,

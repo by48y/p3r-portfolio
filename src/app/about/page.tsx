@@ -64,7 +64,7 @@ export default function AboutPage() {
           <div className="flex w-max animate-marquee-reverse gap-4">
             {[...languages, ...languages].map((lang, index) => (
               <div
-                className="skew-x-[-12deg] border border-slate-700 bg-slate-900 px-6 py-2 font-mono text-sm uppercase tracking-wider text-p3-cyan"
+                className="skew-x-[-12deg] border border-slate-700 bg-slate-900 px-6 py-2 font-mono text-sm uppercase tracking-wider text-white"
                 key={`${lang}-${index}`}
               >
                 <span className="block skew-x-[12deg]">{lang}</span>
