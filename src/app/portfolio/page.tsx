@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { PortfolioCard } from "@/components/PortfolioCard";
+import { ReturnButton } from "@/components/ReturnButton";
 import { playUISound } from "@/utils/sound";
 
 const workExperiences = [
@@ -191,14 +191,8 @@ export default function PortfolioPage() {
 
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
-      <Link
-        className="group relative z-[9999] block cursor-pointer pointer-events-auto clip-slant fixed left-6 top-6 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors group-hover:text-p3-cyan hover:bg-p3-cyan hover:text-p3-dark"
-        href="/"
-      >
-        RETURN
-      </Link>
-
       <div className="mx-auto max-w-6xl">
+        <ReturnButton />
         <p className="text-xs font-bold italic tracking-[0.25em] text-p3-blue">
           ARCHIVE // PROJECT INDEX
         </p>

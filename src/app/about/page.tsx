@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ProfilePortrait } from "@/components/ProfilePortrait";
+import { ReturnButton } from "@/components/ReturnButton";
 
 const biography = [
   "Berawal dari jurusan Rekayasa Perangkat Lunak (RPL) di SMKN 2 Pekanbaru, ketertarikan saya pada dunia pemrograman dan desain mulai tumbuh. Hobi bermain game—terutama kekaguman saya pada estetika UI/UX seri Persona—menginspirasi saya untuk menggabungkan kode dan seni visual.",
@@ -16,14 +16,8 @@ const tools = ["Figma", "Spline", "Canva", "VSCode"];
 export default function AboutPage() {
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
-      <Link
-        className="group relative z-[9999] block cursor-pointer pointer-events-auto clip-slant fixed left-6 top-6 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors group-hover:text-p3-cyan hover:bg-p3-cyan hover:text-p3-dark"
-        href="/"
-      >
-        RETURN
-      </Link>
-
       <div className="mx-auto max-w-6xl">
+        <ReturnButton />
         <p className="text-xs font-bold italic tracking-[0.25em] text-p3-blue">
           PROFILE // CHARACTER STATUS
         </p>
@@ -77,8 +71,8 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <div className="flex w-max animate-marquee-reverse gap-4">
-            {[...tools, ...tools, ...tools, ...tools].map((tool, index) => (
+          <div className="flex w-max animate-marquee gap-4">
+            {[...tools, ...tools].map((tool, index) => (
               <div
                 className="skew-x-[-12deg] border border-slate-700 bg-slate-800 px-6 py-2 font-mono text-sm uppercase tracking-wider text-white"
                 key={`${tool}-${index}`}

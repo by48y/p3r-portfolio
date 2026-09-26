@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail } from "lucide-react";
-import Link from "next/link";
 import { ProfilePortrait } from "@/components/ProfilePortrait";
+import { ReturnButton } from "@/components/ReturnButton";
 
 const links = [
   { label: "GitHub", href: "https://github.com/by48y", detail: "CODE ARCHIVE ↗", icon: Code2 },
@@ -23,12 +23,9 @@ const affiliations = [
 export default function ContactPage() {
   return (
     <main className="mx-auto w-full max-w-6xl pt-20 px-8 grid grid-cols-1 md:grid-cols-12 gap-12 text-slate-900">
-      <Link
-        className="group z-50 inline-flex cursor-pointer items-center gap-2 skew-x-[-12deg] border-l-4 border-p3-cyan bg-slate-900 px-6 py-2 mb-8 text-sm font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:bg-p3-cyan hover:text-slate-900 absolute left-8 top-6"
-        href="/"
-      >
-        <span className="skew-x-[12deg]">◄ RETURN TO BASE</span>
-      </Link>
+      <div className="col-span-full">
+        <ReturnButton />
+      </div>
 
       <section className="flex items-center justify-center md:col-span-4">
         <div className="relative w-full">
