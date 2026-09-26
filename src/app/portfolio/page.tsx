@@ -22,14 +22,14 @@ const workExperiences = [
     period: "",
   },
   {
-    role: "Pengurus / Member",
+    role: "Member",
     entity: "UKM Caltex Techno Scientist (CTS)",
     period: "2026",
   },
-  { role: "Tim Dokum", entity: "ISO PCR 2026", period: "2026" },
-  { role: "Tim Dokum", entity: "STS 2026", period: "2026" },
+  { role: "Panitia Dokumentasi", entity: "ISO PCR 2026", period: "2026" },
+  { role: "Panitia Dokumentasi", entity: "STS 2026", period: "2026" },
   {
-    role: "Participant / Committee",
+    role: "Panitia Dokumentasi",
     entity: "CyberConnect CSIRT PCR X ERC UNRI 2026",
     period: "2026",
   },
@@ -101,6 +101,7 @@ export default function PortfolioPage() {
           {[
             { id: "experience", label: "WORK EXPERIENCE" },
             { id: "projects", label: "PROJECTS" },
+            { id: "gallery", label: "DESIGN GALLERY" },
           ].map((tab) => (
             <button
               className={`relative -skew-x-12 px-6 py-3 text-sm font-black italic tracking-wider ${
