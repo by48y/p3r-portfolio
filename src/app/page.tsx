@@ -62,7 +62,7 @@ export default function Home() {
             ))}
           </motion.div>
           <motion.div
-            className="mt-10 border-l-4 border-p3-cyan bg-slate-900/40 p-6 text-base leading-relaxed text-slate-100 shadow-lg backdrop-blur-md md:p-8"
+            className="mt-10 h-auto w-full max-w-2xl border-l-4 border-p3-cyan bg-slate-900/40 p-6 text-base leading-relaxed text-slate-100 shadow-lg backdrop-blur-md md:p-8"
             variants={{
               hidden: { opacity: 0, x: -32 },
               visible: { opacity: 1, x: 0 },

@@ -23,15 +23,20 @@ const character = {
 export function TypewriterText({ text }: TypewriterTextProps) {
   return (
     <motion.p
-      className="font-mono"
+      className="whitespace-normal break-words font-mono leading-relaxed"
       variants={container}
       initial="hidden"
       animate="visible"
       aria-label={text}
     >
       {Array.from(text).map((letter, index) => (
-        <motion.span aria-hidden="true" key={`${letter}-${index}`} variants={character}>
-          {letter === " " ? "\u00a0" : letter}
+        <motion.span
+          aria-hidden="true"
+          className="inline"
+          key={`${letter}-${index}`}
+          variants={character}
+        >
+          {letter}
         </motion.span>
       ))}
     </motion.p>
