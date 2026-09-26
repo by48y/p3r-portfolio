@@ -19,6 +19,8 @@ body { cursor: none; margin: 0; }
 @media (pointer: fine) { body { cursor: none; } }
 .bg-animated-lines { animation: slide-down 4s linear infinite; background: repeating-linear-gradient(135deg, #f8fafc 0, #f8fafc 18px, #e2e8f0 18px, #e2e8f0 20px); background-size: 100px 100px; pointer-events: none; z-index: -1; }
 @keyframes slide-down { from { background-position: 0 0; } to { background-position: 100px 100px; } }
+@keyframes marquee-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.animate-marquee-reverse { animation: marquee-reverse 25s linear infinite; }
 @keyframes p3-glitch {
   0%, 100% { text-shadow: none; transform: translateX(0); }
   20% { text-shadow: 2px 0 #e5483f, -2px 0 #00e5ff; transform: translateX(-1px); }
