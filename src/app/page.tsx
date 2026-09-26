@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { P3Menu } from "@/components/P3Menu";
-import { MagneticButton } from "@/components/MagneticButton";
 import { TypewriterText } from "@/components/TypewriterText";
 
 const tags = [
@@ -93,16 +92,15 @@ export default function Home() {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <MagneticButton>
-              <Link
-                className="group relative inline-block skew-x-[-12deg] overflow-hidden border-2 border-slate-800 bg-transparent px-8 py-4 font-black italic uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-p3-cyan hover:bg-p3-cyan hover:text-white"
-                href="/portfolio"
-              >
-                <span className="relative z-10 inline-block skew-x-[12deg]">
-                  VIEW PORTFOLIO
-                </span>
-              </Link>
-            </MagneticButton>
+            <Link
+              className="group relative inline-block skew-x-[-12deg] overflow-hidden border-2 border-slate-800 bg-transparent px-8 py-4 font-black italic uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-p3-cyan"
+              href="/portfolio"
+            >
+              <div className="absolute inset-0 z-0 translate-x-[-100%] bg-p3-cyan transition-transform duration-300 ease-out group-hover:translate-x-0" />
+              <span className="relative z-10 block skew-x-[12deg] font-black italic uppercase tracking-wider text-slate-800 transition-colors duration-300 group-hover:text-slate-900">
+                VIEW PORTFOLIO
+              </span>
+            </Link>
           </motion.div>
         </motion.section>
       </main>
