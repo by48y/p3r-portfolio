@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { PortfolioCard } from "@/components/PortfolioCard";
@@ -77,6 +78,11 @@ const projectsData = [
     techStack: ["Web", "UI/UX", "Frontend"],
   },
 ];
+
+const designGallery = Array.from({ length: 9 }, (_, index) => ({
+  src: `/designs/design (${index + 1}).png`,
+  alt: `Design ${index + 1}`,
+}));
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState("experience");
@@ -162,10 +168,30 @@ export default function PortfolioPage() {
               </motion.article>
             ))}
           </motion.div>
-        ) : (
+        ) : activeTab === "projects" ? (
           <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
             {projectsData.map((project) => (
               <PortfolioCard key={project.title} {...project} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {designGallery.map((design) => (
+              <a
+                className="group relative aspect-[4/3] overflow-hidden border-2 border-p3-dark bg-slate-900 shadow-lg transition-transform hover:-translate-y-1"
+                href={design.src}
+                key={design.src}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Image
+                  alt={design.alt}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  src={design.src}
+                />
+              </a>
             ))}
           </div>
         )}
