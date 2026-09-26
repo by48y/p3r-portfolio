@@ -59,13 +59,14 @@ export default function ContactPage() {
                 {affiliations.map((affiliation, index) => (
                   <motion.p
                     animate={{ opacity: 1, x: 0 }}
-                    className="-skew-x-6 bg-p3-dark/20 px-4 py-2 text-xl font-black italic"
+                    className="group relative -skew-x-6 overflow-hidden bg-p3-dark/20 px-4 py-2 text-xl font-black italic"
                     initial={{ opacity: 0, x: 80 }}
                     key={affiliation}
                     transition={{ delay: index * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ x: 10, color: "#00E5FF" }}
+                    whileHover={{ x: 15, color: "#ffffff" }}
                   >
-                    <span className="inline-block skew-x-6">{affiliation}</span>
+                    <span className="absolute inset-y-0 left-0 w-1 -translate-x-full bg-p3-cyan transition-transform duration-200 group-hover:translate-x-0" />
+                    <span className="relative inline-block skew-x-6">{affiliation}</span>
                   </motion.p>
                 ))}
               </div>
@@ -81,12 +82,16 @@ export default function ContactPage() {
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   whileHover={{ color: "#00e5ff" }}
                 >
-                  <motion.span
-                    className="block"
-                    whileHover={{ scale: 1.1, skewX: -12 }}
-                  >
-                    <link.icon size={40} />
-                  </motion.span>
+                  <span className="relative block p-2">
+                    <span className="absolute inset-0 rounded-full border border-p3-cyan opacity-0 transition-opacity duration-200 group-hover:animate-ping group-hover:opacity-100" />
+                    <motion.span
+                      className="relative block"
+                      whileHover={{ rotate: 5, scale: 1.15 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    >
+                      <link.icon size={40} />
+                    </motion.span>
+                  </span>
                   <span className="text-[10px] tracking-widest text-white/60 group-hover:text-p3-cyan">
                     {link.detail}
                   </span>

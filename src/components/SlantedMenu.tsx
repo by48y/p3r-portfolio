@@ -13,7 +13,7 @@ type SlantedMenuProps = {
 };
 
 export function SlantedMenu({ items }: SlantedMenuProps) {
-  const { playHover } = useP3RSounds();
+  const { playClick, playHover } = useP3RSounds();
 
   return (
     <nav aria-label="Section navigation">
@@ -23,6 +23,7 @@ export function SlantedMenu({ items }: SlantedMenuProps) {
             <motion.a
               className="group block -skew-x-12 border-l-4 border-transparent bg-p3-dark px-8 py-4 text-lg font-bold italic text-white transition-colors duration-300 hover:border-p3-cyan hover:bg-p3-blue focus-visible:border-p3-cyan focus-visible:bg-p3-blue focus-visible:outline-none"
               href={item.href}
+              onClick={playClick}
               onMouseEnter={playHover}
               whileHover={{ x: 8 }}
               whileTap={{ scale: 0.97 }}

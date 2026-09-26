@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { PortfolioCard } from "@/components/PortfolioCard";
+import { useP3RSounds } from "@/hooks/useP3RSounds";
 
 const workExperiences = [
   {
@@ -79,13 +80,59 @@ const projectsData = [
   },
 ];
 
-const designGallery = Array.from({ length: 9 }, (_, index) => ({
+const galleryImages = Array.from({ length: 9 }, (_, index) => ({
   src: `/designs/design (${index + 1}).png`,
   alt: `Design ${index + 1}`,
+  isBanner: false,
+  width: [3375, 3375, 3375, 6250, 6250, 3375, 938, 1440, 312][index],
+  height: [6000, 6000, 4219, 2000, 2000, 6000, 938, 3381, 294][index],
 }));
+
+function GalleryImage({
+  image,
+  banner = false,
+}: {
+  image: (typeof galleryImages)[number];
+  banner?: boolean;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const content = (
+    <motion.div
+      className={`relative overflow-hidden rounded-lg border border-slate-700/50 shadow-md ${
+        banner
+          ? "group w-full mt-8"
+          : "break-inside-avoid inline-block w-full mb-4 group"
+      }`}
+      initial={{ opacity: 0.7 }}
+      animate={{ opacity: loaded ? 1 : 0.7 }}
+    >
+      {!loaded && <div className="absolute inset-0 animate-pulse bg-slate-950" />}
+      <Image
+        alt={image.alt}
+        className={`relative h-auto w-full transition-opacity duration-300 ${
+          loaded ? "opacity-100" : "opacity-0"
+        } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
+        height={image.height}
+        loading="lazy"
+        onLoadingComplete={() => setLoaded(true)}
+        quality={80}
+        src={image.src}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+        width={image.width}
+      />
+    </motion.div>
+  );
+
+  return banner ? content : (
+    <a href={image.src} rel="noreferrer" target="_blank">
+      {content}
+    </a>
+  );
+}
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState("experience");
+  const { playClick, playHover } = useP3RSounds();
 
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
@@ -116,13 +163,17 @@ export default function PortfolioPage() {
                   : "bg-transparent text-slate-700"
               }`}
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                playClick();
+              }}
+              onMouseEnter={playHover}
               type="button"
             >
               {activeTab === tab.id && (
                 <motion.span
                   className="absolute inset-0 z-0 bg-p3-cyan"
-                  layoutId="active-portfolio-tab"
+                  layoutId="activeTabIndicator"
                   transition={{ type: "spring", stiffness: 500, damping: 35 }}
                 />
               )}
@@ -175,24 +226,17 @@ export default function PortfolioPage() {
             ))}
           </div>
         ) : (
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {designGallery.map((design) => (
-              <a
-                className="group relative aspect-[4/3] overflow-hidden border-2 border-p3-dark bg-slate-900 shadow-lg transition-transform hover:-translate-y-1"
-                href={design.src}
-                key={design.src}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <Image
-                  alt={design.alt}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  src={design.src}
-                />
-              </a>
-            ))}
+          <div className="mt-10">
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+              {galleryImages
+                .filter((image) => !image.isBanner)
+                .map((image) => <GalleryImage image={image} key={image.src} />)}
+            </div>
+            {galleryImages
+              .filter((image) => image.isBanner)
+              .map((image) => (
+                <GalleryImage banner image={image} key={image.src} />
+              ))}
           </div>
         )}
       </div>

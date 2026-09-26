@@ -12,8 +12,13 @@ const sources: Record<SoundName, string> = {
 
 export function useP3RSounds() {
   const sounds = useRef<Partial<Record<SoundName, Howl>>>({});
+  const hasInteracted = useRef(false);
 
   useEffect(() => {
+    const markInteraction = () => {
+      hasInteracted.current = true;
+    };
+
     (Object.keys(sources) as SoundName[]).forEach((name) => {
       sounds.current[name] = new Howl({
         src: [sources[name]],
@@ -25,14 +30,19 @@ export function useP3RSounds() {
         },
       });
     });
+    document.addEventListener("pointerdown", markInteraction, { once: true });
+    document.addEventListener("keydown", markInteraction, { once: true });
 
     return () => {
+      document.removeEventListener("pointerdown", markInteraction);
+      document.removeEventListener("keydown", markInteraction);
       Object.values(sounds.current).forEach((sound) => sound?.unload());
       sounds.current = {};
     };
   }, []);
 
   const play = useCallback((name: SoundName) => {
+    if (!hasInteracted.current) return;
     sounds.current[name]?.play();
   }, []);
 

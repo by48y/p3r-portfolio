@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { P3Menu } from "@/components/P3Menu";
+import { TypewriterText } from "@/components/TypewriterText";
 
 const tags = [
   "PROGRAMMER",
@@ -32,7 +33,7 @@ export default function Home() {
           }}
         >
           <motion.h1
-            className="-skew-x-6 text-6xl font-black italic uppercase leading-[0.8] tracking-[-0.06em] text-p3-blue text-glow md:text-8xl"
+            className="p3-glitch -skew-x-6 text-6xl font-black italic uppercase leading-[0.8] tracking-[-0.06em] text-p3-blue text-glow md:text-8xl"
             variants={{
               hidden: { opacity: 0, x: -80, skewX: "-12deg" },
               visible: { opacity: 1, x: 0, skewX: "-6deg" },
@@ -67,10 +68,7 @@ export default function Home() {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            Menggabungkan ketajaman logika pemrograman dengan estetika desain
-            visual. Saya merancang ekosistem digital interaktif dan menganalisis
-            data untuk menghadirkan solusi yang fungsional sekaligus memanjakan
-            mata. Welcome to my digital workspace.
+            <TypewriterText text="Menggabungkan ketajaman logika pemrograman dengan estetika desain visual. Saya merancang ekosistem digital interaktif dan menganalisis data untuk menghadirkan solusi yang fungsional sekaligus memanjakan mata. Welcome to my digital workspace." />
           </motion.div>
           <motion.div
             className="mt-8"

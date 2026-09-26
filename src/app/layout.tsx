@@ -3,6 +3,7 @@ import { Teko } from "next/font/google";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PageTransition } from "@/components/PageTransition";
 import { Scanlines } from "@/components/Scanlines";
+import { SystemBoot } from "@/components/SystemBoot";
 import "./globals.css";
 
 const teko = Teko({
@@ -32,8 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${teko.variable} ${teko.className} bg-animated-lines cursor-none text-slate-900`}>
+        <SystemBoot />
         <Scanlines />
         <CustomCursor />
+        <div className="pointer-events-none fixed bottom-4 right-4 z-40 font-mono text-[10px] tracking-widest text-slate-500">
+          LOCATION: PEKANBARU // STATUS: ONLINE
+        </div>
         <PageTransition>{children}</PageTransition>
       </body>
     </html>
