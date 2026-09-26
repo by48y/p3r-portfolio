@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,31 +9,67 @@ import { playUISound } from "@/utils/sound";
 
 const workExperiences = [
   {
+    id: 1,
     role: "Internship IT Support",
     entity: "PT Perkebunan Nusantara IV Regional 3",
     period: "Agustus 2024 - Desember 2024",
+    description:
+      "Menangani infrastruktur jaringan, troubleshooting perangkat keras dan lunak, serta memastikan kelancaran operasional IT harian perusahaan dengan SLA yang ketat.",
+    link: "#",
   },
   {
+    id: 2,
     role: "Internship Data Analyst",
     entity: "Telkom Sudirman & Telkom Akses",
     period: "",
+    description:
+      "Menganalisis dataset perusahaan, menyusun visualisasi data interaktif, dan memberikan insight berbasis metrik untuk mendukung pengambilan keputusan strategis.",
+    link: "#",
   },
   {
+    id: 3,
     role: "Member",
     entity: "UKM Computer Security Incident Response Team (CSIRT)",
     period: "",
+    description:
+      "Mempelajari dan mengimplementasikan protokol keamanan siber, analisis kerentanan, serta simulasi mitigasi insiden jaringan.",
+    link: "#",
   },
   {
-    role: "Member",
+    id: 4,
+    role: "Pengurus / Member",
     entity: "UKM Caltex Techno Scientist (CTS)",
     period: "2026",
+    description:
+      "Merancang logistik acara, menyusun dokumentasi strategis, dan mengeksekusi program kerja yang berfokus pada inovasi teknologi mahasiswa.",
+    link: "#",
   },
-  { role: "Panitia Dokumentasi", entity: "ISO PCR 2026", period: "2026" },
-  { role: "Panitia Dokumentasi", entity: "STS 2026", period: "2026" },
   {
-    role: "Panitia Dokumentasi",
+    id: 5,
+    role: "Tim Dokum",
+    entity: "ISO PCR 2026",
+    period: "2026",
+    description:
+      "Bertanggung jawab penuh atas pengabadian aset visual, pengeditan media, dan manajemen arsip digital (Google Drive) untuk dokumentasi resmi acara.",
+    link: "https://drive.google.com/drive/folders/placeholder",
+  },
+  {
+    id: 6,
+    role: "Tim Dokum",
+    entity: "STS 2026",
+    period: "2026",
+    description:
+      "Melakukan coverage visual secara real-time, memastikan kualitas estetika foto/video, dan mengelola distribusi media pasca-acara.",
+    link: "https://drive.google.com/drive/folders/placeholder",
+  },
+  {
+    id: 7,
+    role: "Participant / Committee",
     entity: "CyberConnect CSIRT PCR X ERC UNRI 2026",
     period: "2026",
+    description:
+      "Berkolaborasi lintas institusi dalam eksekusi acara keamanan siber, mengelola alur komunikasi, dan memastikan kelancaran teknis operasional.",
+    link: "#",
   },
 ];
 
@@ -132,6 +168,7 @@ function GalleryImage({
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState("experience");
+  const [expandedExp, setExpandedExp] = useState<number | null>(null);
 
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
@@ -192,30 +229,62 @@ export default function PortfolioPage() {
             }}
           >
             {workExperiences.map((experience) => (
-              <motion.article
-                className="skew-x-[-4deg] border-l-4 border-p3-cyan bg-slate-900/80 p-5 text-white shadow-lg backdrop-blur-sm"
+              <motion.div
+                className="skew-x-[-4deg] border-l-4 border-p3-cyan bg-slate-900/80 text-white shadow-lg backdrop-blur-sm"
                 key={`${experience.role}-${experience.entity}`}
                 variants={{
                   hidden: { opacity: 0, x: -32 },
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <div className="flex flex-wrap items-baseline justify-between gap-3 skew-x-[4deg]">
-                  <div>
-                    <h2 className="text-xl font-black italic text-p3-cyan">
-                      {experience.role}
-                    </h2>
-                    <p className="mt-2 text-sm text-slate-300">
-                      {experience.entity}
-                    </p>
+                <button
+                  className="w-full p-5 text-left"
+                  onClick={() =>
+                    setExpandedExp(expandedExp === experience.id ? null : experience.id)
+                  }
+                  type="button"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-3 skew-x-[4deg]">
+                    <div>
+                      <h2 className="text-xl font-black italic text-p3-cyan">
+                        {experience.role}
+                      </h2>
+                      <p className="mt-2 text-sm text-slate-300">
+                        {experience.entity}
+                      </p>
+                    </div>
+                    {experience.period && (
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/70">
+                        {experience.period}
+                      </span>
+                    )}
                   </div>
-                  {experience.period && (
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/70">
-                      {experience.period}
-                    </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {expandedExp === experience.id && (
+                    <motion.div
+                      className="overflow-hidden"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                    >
+                      <div className="mt-1 border-l-2 border-p3-cyan bg-slate-900/40 p-4 text-sm text-slate-300">
+                        <p className="skew-x-[4deg]">{experience.description}</p>
+                        {experience.link !== "#" && (
+                          <a
+                            className="mt-4 inline-block -skew-x-6 bg-p3-cyan px-4 py-2 text-xs font-black tracking-wider text-p3-dark transition-colors hover:bg-white"
+                            href={experience.link}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            <span className="inline-block skew-x-6">ACCESS ARCHIVE ↗</span>
+                          </a>
+                        )}
+                      </div>
+                    </motion.div>
                   )}
-                </div>
-              </motion.article>
+                </AnimatePresence>
+              </motion.div>
             ))}
           </motion.div>
         ) : activeTab === "projects" ? (
