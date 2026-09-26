@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { playUISound } from "@/utils/sound";
 
@@ -13,62 +14,69 @@ const items = [
 ];
 
 export function P3Menu() {
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
   const [transitioning, setTransitioning] = useState(false);
   return (
     <>
-      <nav aria-label="Main navigation" className="p3-menu">
-      <span className="p3-menu__label">MENU // 01</span>
-      <div className="flex flex-col items-start gap-2">
-        {items.map((item, index) => {
-          const isActive = active === item.label;
+      <nav aria-label="Main navigation" className="p3-menu relative z-[50]">
+        <span className="p3-menu__label">MENU // 01</span>
+        <div className="flex flex-col items-start gap-2">
+          {items.map((item, index) => {
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
-          return (
-            <motion.div
-              animate={{ opacity: 1, x: 0 }}
-              className={`group relative block -skew-x-12 overflow-hidden clip-slant bg-white/80 px-8 py-4 text-2xl font-bold text-slate-800 transition-colors hover:bg-sky-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
-                isActive ? "bg-sky-100 text-slate-900" : ""
-              }`}
-              initial={{ opacity: 0, x: -48 }}
-              key={item.label}
-              onClick={() => {
-                if (transitioning) return;
-                setActive(item.label);
-                setTransitioning(true);
-                playUISound("click");
-                window.setTimeout(() => setTransitioning(false), 360);
-              }}
-              onMouseEnter={() => {
-                playUISound("hover");
-              }}
-              onFocus={() => setActive(item.label)}
-              whileHover={{ x: 10 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 400,
-                damping: 24,
-              }}
-            >
-              <Link className="block" href={item.href}>
-                <span className="inline-block skew-x-[12deg]">{item.label}</span>
-              </Link>
-              {isActive && (
-                <motion.span
-                  className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-p3-cyan"
-                  layoutId="p3-menu-active"
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                />
-              )}
-            </motion.div>
-          );
-        })}
-      </div>
+            return (
+              <motion.div
+                animate={{ opacity: 1, x: 0 }}
+                className="relative"
+                initial={{ opacity: 0, x: -48 }}
+                key={item.label}
+                transition={{
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 24,
+                }}
+              >
+                <Link
+                  aria-current={isActive ? "page" : undefined}
+                  className={`group relative block px-6 py-3 font-bold uppercase tracking-widest text-slate-800 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-p3-cyan ${
+                    isActive ? "text-p3-cyan" : ""
+                  }`}
+                  href={item.href}
+                  onClick={() => {
+                    if (transitioning) return;
+                    setTransitioning(true);
+                    playUISound("click");
+                    window.setTimeout(() => setTransitioning(false), 360);
+                  }}
+                  onMouseEnter={() => playUISound("hover")}
+                >
+                  <motion.div
+                    className="relative"
+                    whileHover={{ x: 10, color: "#00E5FF" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 24 }}
+                  >
+                    {item.label}
+                  </motion.div>
+                  <motion.span
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-p3-cyan"
+                    initial={false}
+                    animate={{ scaleX: isActive ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  />
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
       </nav>
       <motion.div
         aria-hidden="true"
-        className="p3-transition"
+        className="p3-transition pointer-events-none"
         initial={false}
         animate={transitioning ? "in" : "out"}
         variants={{

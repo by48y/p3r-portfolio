@@ -30,10 +30,10 @@ export default function Home() {
 
   return (
     <div className="grid min-h-screen w-full grid-cols-[clamp(220px,25vw,320px)_minmax(0,1fr)] bg-transparent text-slate-900">
-      <aside className="flex min-h-0 items-center bg-transparent px-6 py-8 lg:px-10">
+      <aside className="relative z-[50] flex min-h-0 items-center bg-transparent px-6 py-8 lg:px-10">
         <P3Menu />
       </aside>
-      <main className="flex min-w-0 items-center bg-transparent px-6 py-20 lg:px-10 lg:py-24">
+      <main className="relative z-[50] flex min-w-0 items-center bg-transparent px-6 py-20 lg:px-10 lg:py-24">
         <motion.section
           className="max-w-2xl"
           initial="hidden"
@@ -87,7 +87,7 @@ export default function Home() {
             <TypewriterText text="Menggabungkan ketajaman logika pemrograman dengan estetika desain visual. Saya merancang ekosistem digital interaktif dan menganalisis data untuk menghadirkan solusi yang fungsional sekaligus memanjakan mata. Welcome to my digital workspace." />
           </motion.div>
           <motion.div
-            className="mt-8"
+            className="relative z-[50] mt-8"
             variants={{
               hidden: { opacity: 0, x: -24 },
               visible: { opacity: 1, x: 0 },
@@ -95,10 +95,12 @@ export default function Home() {
           >
             <MagneticButton>
               <Link
-                className="inline-block -skew-x-6 border-2 border-p3-cyan bg-p3-blue px-8 py-4 font-black italic tracking-[0.12em] text-white shadow-lg transition-colors hover:bg-p3-cyan hover:text-p3-dark"
+                className="group relative inline-block skew-x-[-12deg] overflow-hidden border-2 border-slate-800 bg-transparent px-8 py-4 font-black italic uppercase tracking-wider text-slate-800 transition-all duration-300 hover:border-p3-cyan hover:bg-p3-cyan hover:text-white"
                 href="/portfolio"
               >
-                <span className="inline-block skew-x-6">VIEW PORTFOLIO</span>
+                <span className="relative z-10 inline-block skew-x-[12deg]">
+                  VIEW PORTFOLIO
+                </span>
               </Link>
             </MagneticButton>
           </motion.div>
