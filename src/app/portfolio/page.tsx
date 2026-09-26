@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { PortfolioCard } from "@/components/PortfolioCard";
-import { useP3RSounds } from "@/hooks/useP3RSounds";
+import { playUISound } from "@/utils/sound";
 
 const workExperiences = [
   {
@@ -132,7 +132,6 @@ function GalleryImage({
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState("experience");
-  const { playClick, playHover } = useP3RSounds();
 
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
@@ -165,9 +164,9 @@ export default function PortfolioPage() {
               key={tab.id}
               onClick={() => {
                 setActiveTab(tab.id);
-                playClick();
+                playUISound("click");
               }}
-              onMouseEnter={playHover}
+              onMouseEnter={() => playUISound("hover")}
               type="button"
             >
               {activeTab === tab.id && (

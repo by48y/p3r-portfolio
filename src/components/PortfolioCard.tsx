@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
-import { useP3RSounds } from "@/hooks/useP3RSounds";
+import { playUISound } from "@/utils/sound";
 
 type PortfolioCardProps = {
   title: string;
@@ -16,7 +16,6 @@ export function PortfolioCard({
   techStack,
 }: PortfolioCardProps) {
   const cardRef = useRef<HTMLElement>(null);
-  const { playClick, playHover } = useP3RSounds();
   const rotateX = useSpring(useMotionValue(0), {
     stiffness: 300,
     damping: 20,
@@ -39,12 +38,12 @@ export function PortfolioCard({
       ref={cardRef}
       className="min-h-64 w-full border border-white/50 bg-white/75 p-px text-slate-900 shadow-lg backdrop-blur-sm transition-shadow"
       onMouseMove={handleMouseMove}
-      onMouseEnter={playHover}
+      onMouseEnter={() => playUISound("hover")}
       onMouseLeave={() => {
         rotateX.set(0);
         rotateY.set(0);
       }}
-      onClick={playClick}
+      onClick={() => playUISound("click")}
       initial={{ scale: 1, boxShadow: "0 0 0 rgba(0, 229, 255, 0)" }}
       style={{
         rotateX,

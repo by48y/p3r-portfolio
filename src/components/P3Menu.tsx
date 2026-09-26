@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { useP3RSounds } from "@/hooks/useP3RSounds";
+import { playUISound } from "@/utils/sound";
 
 const items = [
   { label: "Home", href: "/" },
@@ -15,8 +15,6 @@ const items = [
 export function P3Menu() {
   const [active, setActive] = useState("Home");
   const [transitioning, setTransitioning] = useState(false);
-  const { playClick, playHover } = useP3RSounds();
-
   return (
     <>
       <nav aria-label="Main navigation" className="p3-menu">
@@ -37,11 +35,11 @@ export function P3Menu() {
                 if (transitioning) return;
                 setActive(item.label);
                 setTransitioning(true);
-                playClick();
+                playUISound("click");
                 window.setTimeout(() => setTransitioning(false), 360);
               }}
               onMouseEnter={() => {
-                playHover();
+                playUISound("hover");
               }}
               onFocus={() => setActive(item.label)}
               whileHover={{ x: 10 }}

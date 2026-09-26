@@ -1,6 +1,6 @@
 {
   "name": "persona-portfolio",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
-    "howler": "^2.2.4",
     "lucide-react": "^1.48.0",
     "next": "^15.5.6",
     "react": "^19.1.0",
@@ -18,7 +17,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
-    "@types/howler": "^2.2.12",
     "@types/node": "^22.15.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
