@@ -62,10 +62,6 @@ button { background: none; border: 0; color: inherit; cursor: pointer; font: inh
 .brand span, .eyebrow { color: var(--red); }
 .p3-menu { align-items: flex-start; display: flex; flex-direction: column; gap: 16px; }
 .p3-menu__label { color: var(--blue); font-size: .6rem; font-weight: 800; letter-spacing: .12em; }
-.p3-transition { background: var(--blue); inset: 0; pointer-events: none; position: fixed; transform-origin: right center; z-index: 20; }
-.p3-transition__slash { background: #50e8e1; clip-path: polygon(44% 0, 100% 0, 56% 100%, 0 100%); height: 100%; position: absolute; width: 100%; }
-.p3-page-transition { background: #003eda; inset: 0; pointer-events: none; position: fixed; transform-origin: right center; z-index: 100; }
-.p3-page-transition__slash { background: #00e5ff; clip-path: polygon(44% 0, 100% 0, 56% 100%, 0 100%); height: 100%; position: absolute; width: 100%; }
 .scanlines { background: repeating-linear-gradient(to bottom, rgba(0, 229, 255, .1) 0, rgba(0, 229, 255, .1) 1px, transparent 1px, transparent 4px); inset: 0; pointer-events: none; position: fixed; z-index: 90; }
 .scanlines__sweep { animation: scanlines-sweep 7s linear infinite; background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, .18), transparent); height: 18vh; inset: 0 0 auto; position: absolute; }
 @keyframes scanlines-sweep { from { transform: translateY(-100%); } to { transform: translateY(560vh); } }

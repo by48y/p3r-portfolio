@@ -10,6 +10,9 @@ const biography = [
   "Bagi saya, merancang dan membangun sistem digital bukan sekadar tugas, melainkan sebuah taman bermain yang menyenangkan di mana saya bisa meracik visual, menganalisis data, dan menyusun arsitektur server secara harmoni.",
 ];
 
+const languages = ["Java", "Python", "C++", "HTML", "CSS", "JavaScript", "PHP", "TypeScript"];
+const tools = ["Figma", "Spline", "Canva", "VSCode"];
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen w-full bg-transparent px-6 py-24 text-slate-900 md:px-14">
@@ -52,6 +55,38 @@ export default function AboutPage() {
               </motion.p>
             ))}
           </motion.div>
+        </div>
+        <h3 className="mt-12 mb-6 border-b-2 border-p3-cyan pb-2 text-xl font-black italic uppercase tracking-widest text-slate-800">
+          System Architecture // Tech Stack
+        </h3>
+        <div
+          className="relative flex w-full flex-col gap-4 overflow-hidden py-4"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          <div className="flex w-max animate-marquee gap-4">
+            {[...languages, ...languages].map((lang, index) => (
+              <div
+                className="skew-x-[-12deg] border border-slate-700 bg-slate-900 px-6 py-2 font-mono text-sm uppercase tracking-wider text-p3-cyan"
+                key={`${lang}-${index}`}
+              >
+                <span className="block skew-x-[12deg]">{lang}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex w-max animate-marquee-reverse gap-4">
+            {[...tools, ...tools, ...tools, ...tools].map((tool, index) => (
+              <div
+                className="skew-x-[-12deg] border border-slate-700 bg-slate-800 px-6 py-2 font-mono text-sm uppercase tracking-wider text-white"
+                key={`${tool}-${index}`}
+              >
+                <span className="block skew-x-[12deg]">{tool}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </main>

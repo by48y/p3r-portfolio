@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 export function ProfilePortrait() {
   return (
     <motion.div
-      className="group relative aspect-[3/4] overflow-hidden border-4 border-p3-cyan"
-      style={{
-        clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0% 100%)",
-      }}
+      className="group relative w-full aspect-[3/4] overflow-hidden rounded-lg border-2 border-slate-800"
       whileHover={{
         scale: 1.05,
         filter: "drop-shadow(0 0 24px rgba(0, 229, 255, 0.85))",

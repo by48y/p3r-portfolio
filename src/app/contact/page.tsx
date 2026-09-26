@@ -22,84 +22,80 @@ const affiliations = [
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 gap-12 overflow-hidden bg-transparent px-6 py-24 text-slate-900 lg:grid-cols-12 md:px-14">
+    <main className="mx-auto w-full max-w-6xl pt-20 px-8 grid grid-cols-1 md:grid-cols-12 gap-12 text-slate-900">
       <Link
-        className="group relative z-[9999] block cursor-pointer pointer-events-auto clip-slant absolute left-6 top-6 bg-p3-dark px-8 py-3 text-sm font-bold tracking-[0.18em] text-white transition-colors group-hover:text-p3-cyan hover:bg-p3-cyan hover:text-p3-dark"
+        className="group z-50 inline-flex cursor-pointer items-center gap-2 skew-x-[-12deg] border-l-4 border-p3-cyan bg-slate-900 px-6 py-2 mb-8 text-sm font-bold uppercase tracking-widest text-white transition-colors duration-300 hover:bg-p3-cyan hover:text-slate-900 absolute left-8 top-6"
         href="/"
       >
-        RETURN
+        <span className="skew-x-[12deg]">◄ RETURN TO BASE</span>
       </Link>
 
-      <section className="sticky top-24 flex min-h-[55vh] items-center justify-center overflow-hidden bg-p3-dark lg:col-span-4 lg:min-h-[calc(100vh-12rem)]">
-        <div className="absolute h-[72vw] w-[72vw] max-w-[680px] rotate-[-12deg] skew-x-[-12deg] bg-p3-cyan opacity-90" />
-        <div className="relative w-full max-w-sm px-8">
+      <section className="flex items-center justify-center md:col-span-4">
+        <div className="relative w-full">
           <ProfilePortrait />
         </div>
       </section>
 
-        <motion.section
-          className="flex flex-col bg-p3-blue px-8 py-12 lg:col-span-8 lg:px-16 lg:py-16"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="flex w-full flex-col">
-            <p className="mb-8 text-xs font-bold italic tracking-[0.25em] text-p3-cyan">
-              SOCIAL LINK // CHARACTER STATUS
-            </p>
-            <h1 className="mb-12 border-b border-slate-300/30 pb-4 text-6xl font-bold italic leading-[0.8] text-p3-cyan text-glow md:text-8xl">
-              Aby
-              <br />
-              Amanullah
-            </h1>
+      <motion.section
+        className="flex flex-col justify-center md:col-span-8"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className="mb-8 text-xs font-bold italic tracking-[0.25em] text-p3-cyan">
+          SOCIAL LINK // CHARACTER STATUS
+        </p>
+        <h1 className="mb-8 border-b-2 border-p3-cyan pb-4 text-6xl font-bold italic leading-[0.8] text-p3-cyan text-glow md:text-8xl">
+          Aby
+          <br />
+          Amanullah
+        </h1>
 
-            <div className="border-y border-p3-cyan/40 py-6">
-              <p className="text-xs font-bold tracking-[0.2em] text-p3-cyan">CURRENT AFFILIATIONS</p>
-              <div className="mt-4 flex flex-col gap-4">
-                {affiliations.map((affiliation, index) => (
-                  <motion.p
-                    animate={{ opacity: 1, x: 0 }}
-                    className="group relative -skew-x-6 overflow-hidden bg-p3-dark/20 px-4 py-2 text-xl font-black italic"
-                    initial={{ opacity: 0, x: 80 }}
-                    key={affiliation}
-                    transition={{ delay: index * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ x: 15, color: "#ffffff" }}
-                  >
-                    <span className="absolute inset-y-0 left-0 w-1 -translate-x-full bg-p3-cyan transition-transform duration-200 group-hover:translate-x-0" />
-                    <span className="relative inline-block skew-x-6">{affiliation}</span>
-                  </motion.p>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-16 flex flex-row items-center justify-center gap-8 border-t-2 border-p3-cyan/50 pt-8">
-              {links.map((link) => (
-                <motion.a
-                  className="group flex flex-col items-center gap-2 text-white transition-colors hover:text-p3-cyan"
-                  href={link.href}
-                  key={link.label}
-                  rel="noreferrer"
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  whileHover={{ color: "#00e5ff" }}
-                >
-                  <span className="relative block p-2">
-                    <span className="absolute inset-0 rounded-full border border-p3-cyan opacity-0 transition-opacity duration-200 group-hover:animate-ping group-hover:opacity-100" />
-                    <motion.span
-                      className="relative block"
-                      whileHover={{ rotate: 5, scale: 1.15 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    >
-                      <link.icon size={40} />
-                    </motion.span>
-                  </span>
-                  <span className="text-[10px] tracking-widest text-white/60 group-hover:text-p3-cyan">
-                    {link.detail}
-                  </span>
-                </motion.a>
-              ))}
-            </div>
+        <div>
+          <p className="text-xs font-bold tracking-[0.2em] text-p3-cyan">CURRENT AFFILIATIONS</p>
+          <div className="mt-4 flex flex-col gap-6">
+            {affiliations.map((affiliation, index) => (
+              <motion.p
+                animate={{ opacity: 1, x: 0 }}
+                className="border-l-2 border-p3-cyan/50 pl-4 text-xl font-black italic"
+                initial={{ opacity: 0, x: 80 }}
+                key={affiliation}
+                transition={{ delay: index * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ x: 15, color: "#ffffff" }}
+              >
+                {affiliation}
+              </motion.p>
+            ))}
           </div>
-        </motion.section>
+        </div>
+
+        <div className="mt-12 flex flex-row items-center justify-center gap-8 border-t-2 border-p3-cyan/50 pt-8">
+          {links.map((link) => (
+            <motion.a
+              className="group flex flex-col items-center gap-2 text-white transition-colors hover:text-p3-cyan"
+              href={link.href}
+              key={link.label}
+              rel="noreferrer"
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              whileHover={{ color: "#00e5ff" }}
+            >
+              <span className="relative block p-2">
+                <span className="absolute inset-0 rounded-full border border-p3-cyan opacity-0 transition-opacity duration-200 group-hover:animate-ping group-hover:opacity-100" />
+                <motion.span
+                  className="relative block"
+                  whileHover={{ rotate: 5, scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                >
+                  <link.icon size={40} />
+                </motion.span>
+              </span>
+              <span className="text-[10px] tracking-widest text-white/60 group-hover:text-p3-cyan">
+                {link.detail}
+              </span>
+            </motion.a>
+          ))}
+        </div>
+      </motion.section>
     </main>
   );
 }
