@@ -101,6 +101,7 @@ export default function PortfolioPage() {
           {[
             { id: "experience", label: "WORK EXPERIENCE" },
             { id: "projects", label: "PROJECTS" },
+            { id: "gallery", label: "DESIGN GALLERY" },
           ].map((tab) => (
             <button
               className={`relative -skew-x-12 px-6 py-3 text-sm font-black italic tracking-wider ${
