@@ -61,7 +61,7 @@ export default function AboutPage() {
               "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           }}
         >
-          <div className="flex w-max animate-marquee gap-4">
+          <div className="flex w-max animate-marquee-reverse gap-4">
             {[...languages, ...languages].map((lang, index) => (
               <div
                 className="skew-x-[-12deg] border border-slate-700 bg-slate-900 px-6 py-2 font-mono text-sm uppercase tracking-wider text-p3-cyan"
@@ -71,7 +71,7 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <div className="flex w-max animate-marquee gap-4">
+          <div className="flex w-max animate-marquee-reverse gap-4">
             {[...tools, ...tools].map((tool, index) => (
               <div
                 className="skew-x-[-12deg] border border-slate-700 bg-slate-800 px-6 py-2 font-mono text-sm uppercase tracking-wider text-white"
